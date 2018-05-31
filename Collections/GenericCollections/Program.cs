@@ -8,60 +8,33 @@ namespace GenericCollections
 {
     class Program
     {
-        static IDictionary<string, decimal> numberOfEmps;
         static void Main(string[] args)
         {
-            numberOfEmps = AddEmployeesInfo();
 
-            Console.WriteLine("Name\t\tSalary");
+            List<Employee> employees = FileHandler.GetEmployees();
 
-            foreach (var emps in numberOfEmps)
+            Header();
+            employees.ForEach(employee =>
             {
-                Console.WriteLine("{0}\t\t{1}", emps.Key, emps.Value);
-
-            }
-
-            Console.WriteLine("Enter employee to search: ");
-            string name = Console.ReadLine();
-
-            Console.WriteLine($"Status: {Search(name)}");
+                if (employee is PermanentEmployee)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(employee.ToString());
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(employee.ToString());
+                }
+            });
 
             Console.ReadLine();
         }
 
-        public static IDictionary<string, decimal> AddEmployeesInfo(string name = "", decimal salary = (decimal)0.0)
+        private static void Header()
         {
-
-            IDictionary<string, decimal> numberOfEmps = new Dictionary<string, decimal>();
-
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine("Enter employee name:");
-                name = Console.ReadLine();
-
-                Console.WriteLine("Enter salary of an employee:");
-                salary = decimal.Parse(Console.ReadLine());
-
-                numberOfEmps.Add(name, salary);
-
-            }
-
-            return numberOfEmps;
-        }
-
-        public static bool Search(string name)
-        {
-            bool containKey = false;
-
-            if (numberOfEmps.ContainsKey(name))
-            {
-                containKey = true;
-            }
-            else
-            {
-                containKey = false;
-            }
-            return containKey;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("FirstName\tLastName\tEmail\tJobType\tHourly Rate\tJob Title\tHours Worked\tPolicies Sold");
         }
     }
 }

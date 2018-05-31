@@ -1,0 +1,3 @@
+﻿John,Doe,john@doe.co.za,PERMANENT,50,Senior Architect,8
+Nigen,Rimes,nig@rimes.co.za,CONTRACT,60,Software Developer,8,30
+Nandi,Msona,nandi@msu.co.za,CONTRACT,50,Business Analyst,8,40

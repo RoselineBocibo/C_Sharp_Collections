@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.ComponentModel;
+using EnumHelper;
+using Employees.Models;
+using Employees.BAL;
+using System.Configuration;
 
-namespace GenericCollections
+namespace Employees.DAL
 {
     enum EmployeeType
     {
@@ -21,7 +21,7 @@ namespace GenericCollections
        
         public static List<Employee> GetEmployees()
         {
-            StreamReader reader = new StreamReader("Employeeinfo.txt");
+            StreamReader reader = new StreamReader(ConfigurationManager.AppSettings["FilePath"]);
 
             string line = string.Empty;
 

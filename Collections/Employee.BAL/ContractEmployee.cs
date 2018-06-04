@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Employees.Models;
 
-namespace GenericCollections
+namespace Employees.BAL
 {
-    class ContractEmployee : Employee
+    public class ContractEmployee : Employee
     {
         private const int  MONTH_DAYS = 20;
         private const int TARGET = 25;
@@ -21,14 +17,14 @@ namespace GenericCollections
 
         public override decimal CalculateSalary()
         {
-            decimal base_salary = HourlyRate * (decimal)HoursWorked * MONTH_DAYS;
+            decimal baseSalary = HourlyRate * (decimal)HoursWorked * MONTH_DAYS;
 
             if (policiesSold >= TARGET)
             {
-                base_salary += base_salary * (decimal)COMMISSION_RATE;
+                baseSalary += baseSalary * (decimal)COMMISSION_RATE;
             }
 
-            return base_salary;
+            return baseSalary;
         }
 
         public override string ToString()
